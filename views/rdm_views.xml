@@ -99,6 +99,12 @@
         <field name="model">rdm.solicitud</field>
         <field name="arch" type="xml">
             <kanban class="o_kanban_small_column">
+
+                <!-- CAMBIOS: Añadimos estos dos campos invisibles para tener el ID disponible -->
+                <field name="id" invisible="1"/>
+                <field name="__last_update" invisible="1"/>
+                <!-- FIN CAMBIOS -->
+
                 <field name="name"/>
                 <field name="fecha_solicitud"/>
                 <field name="fecha_requerida"/>
@@ -108,7 +114,14 @@
 
                 <templates>
                     <t t-name="kanban-box">
-                        <div t-att-class="'oe_kanban_card o_kanban_record o_kanban_global_click'">
+                        <!-- CAMBIOS: Se añaden data-id, data-res-id, data-model y data-context en la etiqueta DIV -->
+                        <div t-att-class="'oe_kanban_card o_kanban_record o_kanban_global_click'"
+                            t-att-data-id="record.id.raw_value"
+                            t-att-data-res-id="record.id.raw_value"
+                            t-att-data-model="record._name"
+                            t-att-data-context="{'form_view_ref':'view_rdm_solicitud_form'}">
+                        <!-- FIN CAMBIOS -->
+
                             <div class="o_kanban_card_header">
                                 <strong>
                                     <t t-esc="record.name.value"/>
@@ -142,6 +155,7 @@
             </kanban>
         </field>
     </record>
+
 
 
     <!-- Vista de búsqueda para Solicitudes RDM (opcional, recomendado) -->
