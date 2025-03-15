@@ -1,0 +1,8 @@
+<odoo>
+    <data noupdate="0">
+        <record id="group_rdm_user" model="res.groups">
+            <field name="name">Usuario RDM</field>
+            <field name="category_id" ref="base.module_category_inventory"/>
+        </record>
+    </data>
+</odoo>
