@@ -93,7 +93,7 @@
     </record>
     
 
-    <!-- Vista Kanban Actualizada para Solicitudes RDM -->
+    <!-- Vista Kanban estándar corregida para listar Solicitudes RDM -->
     <record id="view_rdm_solicitud_kanban" model="ir.ui.view">
         <field name="name">rdm.solicitud.kanban</field>
         <field name="model">rdm.solicitud</field>
@@ -140,16 +140,13 @@
                                 </t>
                             </div>
 
-                            <a type="open" class="oe_kanban_global_click"
-                            t-att-data-id="record.id.raw_value"
-                            t-att-data-model="record._name"
-                            t-att-data-context="{'form_view_ref': 'rdm_management.view_rdm_solicitud_form'}"/>
                         </div>
                     </t>
                 </templates>
             </kanban>
         </field>
     </record>
+
 
 
 
