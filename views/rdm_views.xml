@@ -9,8 +9,9 @@
                     <h1>
                         <field name="name" placeholder="Solicitud"/>
                     </h1>
-                    <field name="estado" widget="statusbar"/>
+                    <field name="estado" widget="statusbar" statusbar_visible="borrador,revision,aprobado,rechazado,enviado_compras,recibido"/>
                 </div>
+
                 <group>
                     <group string="Información de Solicitud">
                         <field name="fecha_solicitud"/>
@@ -47,17 +48,15 @@
                             <field name="justificacion"/>
                         </group>
                         <group>
-                            <field name="archivo_adjunto" filename="name"/>
+                            <field name="archivo_adjunto" filename="archivo_adjunto_nombre"/>
                         </group>
                     </page>
                 </notebook>
             </sheet>
 
             <!-- Chatter (Notas, Seguimiento, Actividades) debe ir FUERA de <sheet> -->
-            <div class="oe_chatter">
-                <field name="message_ids" widget="mail_thread"/>
-                <field name="message_follower_ids" widget="mail_followers"/>
-            </div>
+            <field name="message_ids" widget="mail_thread"/>
+            <field name="message_follower_ids" widget="mail_followers"/>
         </form>
     </field>
 </record>
