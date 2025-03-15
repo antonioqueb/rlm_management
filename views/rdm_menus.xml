@@ -4,7 +4,7 @@
     <record id="action_rdm_solicitud" model="ir.actions.act_window">
         <field name="name">Solicitudes RDM</field>
         <field name="res_model">rdm.solicitud</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,kanban,form</field>
     </record>
 
     <!-- Menú principal con Ícono -->
