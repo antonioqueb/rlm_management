@@ -27,7 +27,6 @@ class RdmSolicitud(models.Model):
     fecha_critica = fields.Date(string='Fecha crítica (opcional)')
     autorizado_por_id = fields.Many2one('res.users', string='Autorizado por')
     comentario_autorizador = fields.Text(string='Comentario del Autorizador')
-    metodo_surtido = fields.Selection([('stock', 'Stock'), ('compras', 'Compras')], string='Método de Surtido', required=True, tracking=True)
     justificacion = fields.Text(string='Justificación')
     archivo_adjunto = fields.Binary(string='Archivo Adjunto', attachment=True)
     archivo_adjunto_nombre = fields.Char(string="Nombre del Archivo")

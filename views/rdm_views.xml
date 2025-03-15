@@ -30,7 +30,7 @@
                         </group>
                         <group string="Datos de Almacén y Surtido">
                             <field name="almacen_id" options="{'no_quick_create': True}"/>
-                            <field name="metodo_surtido"/>
+                          
                         </group>
                         <group string="Autorizaciones">
                             <field name="solicitante_id"/>
