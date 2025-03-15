@@ -4,7 +4,7 @@ from odoo.exceptions import ValidationError
 class RdmSolicitud(models.Model):
     _name = 'rdm.solicitud'
     _description = 'Solicitud RDM'
-    _inherit = ['mail.thread', 'mail.activity.mixin', 'mail.activity']
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string='Folio del RDM', required=True, copy=False, index=True, default='Nuevo', readonly=True)
     fecha_solicitud = fields.Date(string='Fecha de Solicitud', default=fields.Date.context_today, required=True)
