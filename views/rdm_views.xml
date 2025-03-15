@@ -105,7 +105,7 @@
                 <field name="almacen_id"/>
                 <field name="estado"/>
                 <field name="prioridad"/>
-    
+
                 <templates>
                     <t t-name="kanban-box">
                         <div t-att-class="'oe_kanban_card o_kanban_global_click'">
@@ -128,14 +128,7 @@
                                     <span t-esc="record.fecha_requerida.value"/>
                                 </div>
                                 <div class="oe_kanban_badge">
-                                    <span t-esc="record.estado.value"
-                                          t-att-class="'badge ' + 
-                                              ('badge-secondary' if record.estado.raw_value == 'borrador' else '') +
-                                              (' badge-warning' if record.estado.raw_value == 'revision' else '') +
-                                              (' badge-success' if record.estado.raw_value == 'aprobado' else '') +
-                                              (' badge-danger' if record.estado.raw_value == 'rechazado' else '') +
-                                              (' badge-info' if record.estado.raw_value == 'enviado_compras' else '') +
-                                              (' badge-primary' if record.estado.raw_value == 'recibido' else '')"/>
+                                    <span t-esc="record.estado.value" class="badge badge-info"/>
                                 </div>
                             </div>
                             <div class="o_kanban_card_footer">
@@ -149,7 +142,6 @@
             </kanban>
         </field>
     </record>
-    
 
 
     <!-- Vista de búsqueda para Solicitudes RDM (opcional, recomendado) -->
