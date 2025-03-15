@@ -30,6 +30,8 @@ class RdmSolicitud(models.Model):
     metodo_surtido = fields.Selection([('stock', 'Stock'), ('compras', 'Compras')], string='Método de Surtido', required=True)
     justificacion = fields.Text(string='Justificación')
     archivo_adjunto = fields.Binary(string='Archivo Adjunto', attachment=True)
+    archivo_adjunto_nombre = fields.Char(string="Nombre del Archivo")
+
 
     @api.model
     def create(self, vals):
