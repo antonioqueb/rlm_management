@@ -1,7 +1,7 @@
 {
     'name': 'Gestión de RDM',
     'version': '17.0.1.0.0',
-    'summary': 'Gestiona resoluciones de materia prima (RDM)',
+    'summary': 'Gestiona requisición de materia prima (RDM)',
     'description': """
         Módulo para gestión completa del proceso de resoluciones de materia prima (RDM), permitiendo solicitud, autorización, seguimiento y archivo documental.
     """,
