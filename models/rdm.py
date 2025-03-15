@@ -37,6 +37,27 @@ class RdmSolicitud(models.Model):
         if vals.get('name', 'Nuevo') == 'Nuevo':
             vals['name'] = self.env['ir.sequence'].next_by_code('rdm.solicitud') or 'Nuevo'
         return super(RdmSolicitud, self).create(vals)
+    
+    # Agrega al final dentro de class RdmSolicitud(models.Model):
+
+    def action_enviar_revision(self):
+        self.write({'estado': 'revision'})
+
+    def action_aprobar(self):
+        self.write({'estado': 'aprobado', 'autorizado_por_id': self.env.user.id})
+
+    def action_rechazar(self):
+        self.write({'estado': 'rechazado'})
+
+    def action_enviar_compras(self):
+        self.write({'estado': 'enviado_compras'})
+
+    def action_marcar_recibido(self):
+        self.write({'estado': 'recibido'})
+
+    def action_reset_borrador(self):
+        self.write({'estado': 'borrador'})
+
 
 
 class RdmSolicitudLinea(models.Model):
