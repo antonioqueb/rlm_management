@@ -4,14 +4,15 @@
     <field name="arch" type="xml">
         <form>
             <sheet>
+                <!-- Encabezado con nombre de la solicitud y barra de estado -->
                 <div class="oe_title">
                     <h1>
                         <field name="name" placeholder="Solicitud"/>
                     </h1>
-                    <field name="estado" widget="statusbar" statusbar_visible="borrador,revision,aprobado,rechazado,enviado_compras,recibido"/>
+                    <field name="estado" widget="statusbar"/>
                 </div>
-                <group string="Información de Solicitud">
-                    <group string="Fechas">
+                <group>
+                    <group string="Información de Solicitud">
                         <field name="fecha_solicitud"/>
                         <field name="fecha_requerida"/>
                         <field name="fecha_critica"/>
@@ -46,12 +47,13 @@
                             <field name="justificacion"/>
                         </group>
                         <group>
-                            <field name="archivo_adjunto" filename="archivo_adjunto_nombre"/>
+                            <field name="archivo_adjunto" filename="name"/>
                         </group>
                     </page>
                 </notebook>
             </sheet>
 
+            <!-- Chatter (Notas, Seguimiento, Actividades) debe ir FUERA de <sheet> -->
             <div class="oe_chatter">
                 <field name="message_ids" widget="mail_thread"/>
                 <field name="message_follower_ids" widget="mail_followers"/>

@@ -22,16 +22,15 @@ class RdmSolicitud(models.Model):
         ('recibido', 'Recibido')],
         string='Estado del RDM', default='borrador', tracking=True)
 
-    linea_ids = fields.One2many('rdm.solicitud.linea', 'solicitud_id', string='Líneas de solicitud', required=True)
-    prioridad = fields.Selection([('baja', 'Baja'), ('media', 'Media'), ('alta', 'Alta')], string='Prioridad', default='media')
+    linea_ids = fields.One2many('rdm.solicitud.linea', 'solicitud_id', string='Líneas de solicitud')
+    prioridad = fields.Selection([('baja', 'Baja'), ('media', 'Media'), ('alta', 'Alta')], string='Prioridad', default='media', tracking=True)
     fecha_critica = fields.Date(string='Fecha crítica (opcional)')
     autorizado_por_id = fields.Many2one('res.users', string='Autorizado por')
     comentario_autorizador = fields.Text(string='Comentario del Autorizador')
-    metodo_surtido = fields.Selection([('stock', 'Stock'), ('compras', 'Compras')], string='Método de Surtido', required=True)
+    metodo_surtido = fields.Selection([('stock', 'Stock'), ('compras', 'Compras')], string='Método de Surtido', required=True, tracking=True)
     justificacion = fields.Text(string='Justificación')
     archivo_adjunto = fields.Binary(string='Archivo Adjunto', attachment=True)
     archivo_adjunto_nombre = fields.Char(string="Nombre del Archivo")
-
 
     @api.model
     def create(self, vals):
@@ -46,4 +45,4 @@ class RdmSolicitudLinea(models.Model):
     solicitud_id = fields.Many2one('rdm.solicitud', string='Solicitud RDM', required=True)
     product_id = fields.Many2one('product.product', string='Producto Solicitado', required=True)
     cantidad_solicitada = fields.Float(string='Cantidad Solicitada', required=True)
-    uom_id = fields.Many2one('uom.uom', string='Unidad de Medida', related='product_id.uom_id', readonly=True)
+    uom_id = fields.Many2one('uom.uom', string='Unidad de Medida', related='product_id.uom_id', readonly=True, store=True)
