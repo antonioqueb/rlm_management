@@ -102,7 +102,6 @@
 
                 <!-- CAMBIOS: Añadimos estos dos campos invisibles para tener el ID disponible -->
                 <field name="id" invisible="1"/>
-                <field name="__last_update" invisible="1"/>
                 <!-- FIN CAMBIOS -->
 
                 <field name="name"/>
