@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <!-- Vista Formulario RDM corregida -->
+    <!-- Vista Formulario RDM -->
     <record id="view_rdm_solicitud_form" model="ir.ui.view">
         <field name="name">rdm.solicitud.form</field>
         <field name="model">rdm.solicitud</field>
@@ -55,6 +55,7 @@
                             <group string="Justificación">
                                 <field name="justificacion"/>
                             </group>
+                           
                         </page>
                     </notebook>
                 </sheet>
@@ -68,7 +69,7 @@
         </field>
     </record>
 
-    <!-- Vista Árbol para listar Solicitudes RDM -->
+    <!-- Vista Árbol para listar Solicitudes RDM (opcional, recomendado) -->
     <record id="view_rdm_solicitud_tree" model="ir.ui.view">
         <field name="name">rdm.solicitud.tree</field>
         <field name="model">rdm.solicitud</field>
@@ -84,7 +85,7 @@
         </field>
     </record>
 
-    <!-- Vista de búsqueda para Solicitudes RDM -->
+    <!-- Vista de búsqueda para Solicitudes RDM (opcional, recomendado) -->
     <record id="view_rdm_solicitud_search" model="ir.ui.view">
         <field name="name">rdm.solicitud.search</field>
         <field name="model">rdm.solicitud</field>
