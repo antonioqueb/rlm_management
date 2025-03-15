@@ -93,7 +93,6 @@
     </record>
     
 
-    <!-- Vista Kanban estándar corregida para listar Solicitudes RDM -->
     <record id="view_rdm_solicitud_kanban" model="ir.ui.view">
         <field name="name">rdm.solicitud.kanban</field>
         <field name="model">rdm.solicitud</field>
@@ -105,48 +104,46 @@
                 <field name="almacen_id"/>
                 <field name="estado"/>
                 <field name="prioridad"/>
-
+    
                 <templates>
                     <t t-name="kanban-box">
                         <div t-att-class="'oe_kanban_card oe_kanban_card_small o_kanban_record o_kanban_global_click'"
                             t-att-data-res-id="record.id.raw_value"
                             t-att-data-model="record._name"
                             t-att-data-context="{'form_view_ref':'rdm_management.view_rdm_solicitud_form'}">
-
+    
+                            <!-- Cabecera Compacta -->
                             <div class="o_kanban_card_header">
-                                <strong>
+                                <strong class="o_text_overflow">
                                     <t t-esc="record.name.value"/>
                                 </strong>
                             </div>
-
-                            <div class="o_kanban_card_content">
-                                <div>
-                                    <small>Almacén:</small>
-                                    <span t-esc="record.almacen_id.value"/>
-                                </div>
-                                <div>
-                                    <small>Fecha Solicitud:</small>
-                                    <span t-esc="record.fecha_solicitud.value"/>
-                                </div>
-                                <div>
-                                    <small>Fecha Requerida:</small>
-                                    <span t-esc="record.fecha_requerida.value"/>
-                                </div>
+    
+                            <!-- Contenido Compacto -->
+                            <div class="o_kanban_card_content" style="font-size: 12px; line-height: 14px;">
+                                <span><b>Almacén: </b><t t-esc="record.almacen_id.value"/></span><br/>
+                                <span><b>F. Solicitud: </b><t t-esc="record.fecha_solicitud.value"/></span><br/>
+                                <span><b>F. Requerida: </b><t t-esc="record.fecha_requerida.value"/></span>
                             </div>
-
+    
+                            <!-- Pie con Iconos en Línea -->
                             <div class="o_kanban_card_footer">
                                 <t t-if="record.prioridad.raw_value == 'alta'">
                                     <span class="fa fa-exclamation-triangle text-danger" title="Alta Prioridad"/>
                                 </t>
                             </div>
-
+    
+                            <a type="open" class="oe_kanban_global_click"
+                               t-att-data-id="record.id.raw_value"
+                               t-att-data-model="record._name"
+                               t-att-data-context="{'form_view_ref': 'rdm_management.view_rdm_solicitud_form'}"/>
                         </div>
                     </t>
                 </templates>
             </kanban>
         </field>
     </record>
-
+    
 
 
 
