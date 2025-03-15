@@ -79,11 +79,19 @@
                 <field name="fecha_solicitud"/>
                 <field name="fecha_requerida"/>
                 <field name="almacen_id"/>
-                <field name="estado" widget="badge"/>
+                <field name="estado" widget="badge"
+                       decoration-muted="estado == 'borrador'"
+                       decoration-warning="estado == 'revision'"
+                       decoration-success="estado == 'aprobado'"
+                       decoration-danger="estado == 'rechazado'"
+                       decoration-info="estado == 'enviado_compras'"
+                       decoration-primary="estado == 'recibido'"
+                />
                 <field name="prioridad"/>
             </tree>
         </field>
     </record>
+    
 
     <!-- Vista Kanban para listar Solicitudes RDM -->
     <record id="view_rdm_solicitud_kanban" model="ir.ui.view">
