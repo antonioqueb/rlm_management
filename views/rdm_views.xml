@@ -108,7 +108,7 @@
 
                 <templates>
                     <t t-name="kanban-box">
-                        <div t-att-class="'oe_kanban_card o_kanban_global_click'">
+                        <div t-att-class="'oe_kanban_card o_kanban_record o_kanban_global_click'">
                             <div class="o_kanban_card_header">
                                 <strong>
                                     <t t-esc="record.name.value"/>
