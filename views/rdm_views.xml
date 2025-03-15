@@ -1,64 +1,99 @@
-<record id="view_rdm_solicitud_form" model="ir.ui.view">
-    <field name="name">rdm.solicitud.form</field>
-    <field name="model">rdm.solicitud</field>
-    <field name="arch" type="xml">
-        <form>
-            <sheet>
-                <!-- Encabezado con nombre de la solicitud y barra de estado -->
-                <div class="oe_title">
-                    <h1>
-                        <field name="name" placeholder="Solicitud"/>
-                    </h1>
-                    <field name="estado" widget="statusbar" statusbar_visible="borrador,revision,aprobado,rechazado,enviado_compras,recibido"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Vista Formulario RDM -->
+    <record id="view_rdm_solicitud_form" model="ir.ui.view">
+        <field name="name">rdm.solicitud.form</field>
+        <field name="model">rdm.solicitud</field>
+        <field name="arch" type="xml">
+            <form string="Solicitud RDM">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Solicitud"/>
+                        </h1>
+                        <field name="estado" widget="statusbar" statusbar_visible="borrador,revision,aprobado,rechazado,enviado_compras,recibido"/>
+                    </div>
+
+                    <group string="Información de Solicitud">
+                        <group string="Fechas">
+                            <field name="fecha_solicitud"/>
+                            <field name="fecha_requerida"/>
+                            <field name="fecha_critica"/>
+                            <field name="prioridad"/>
+                        </group>
+                        <group string="Datos de Almacén y Surtido">
+                            <field name="almacen_id" options="{'no_quick_create': True}"/>
+                            <field name="metodo_surtido"/>
+                        </group>
+                        <group string="Autorizaciones">
+                            <field name="solicitante_id"/>
+                            <field name="autorizado"/>
+                            <field name="autorizado_por_id"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Productos Solicitados">
+                            <field name="linea_ids">
+                                <tree editable="bottom">
+                                    <field name="product_id" options="{'no_quick_create': True}"/>
+                                    <field name="cantidad_solicitada"/>
+                                    <field name="uom_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Detalles de la Solicitud">
+                            <group string="Comentarios">
+                                <field name="comentario_autorizador"/>
+                            </group>
+                            <group string="Justificación">
+                                <field name="justificacion"/>
+                            </group>
+                            <group string="Adjuntos">
+                                <field name="archivo_adjunto" filename="archivo_adjunto_nombre"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+
+                <!-- Chatter de Odoo fuera del sheet -->
+                <div class="oe_chatter">
+                    <field name="message_ids" widget="mail_thread"/>
+                    <field name="message_follower_ids" widget="mail_followers"/>
                 </div>
+            </form>
+        </field>
+    </record>
 
-                <group string="Información de Solicitud">
-                    <group string="Fechas">
-                        <field name="fecha_solicitud"/>
-                        <field name="fecha_requerida"/>
-                        <field name="fecha_critica"/>
-                        <field name="prioridad"/>
-                    </group>
-                    <group string="Datos de Almacén y Surtido">
-                        <field name="almacen_id"/>
-                        <field name="metodo_surtido"/>
-                    </group>
-                    <group string="Autorizaciones">
-                        <field name="solicitante_id"/>
-                        <field name="autorizado"/>
-                        <field name="autorizado_por_id"/>
-                    </group>
-                </group>
+    <!-- Vista Árbol para listar Solicitudes RDM (opcional, recomendado) -->
+    <record id="view_rdm_solicitud_tree" model="ir.ui.view">
+        <field name="name">rdm.solicitud.tree</field>
+        <field name="model">rdm.solicitud</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="fecha_solicitud"/>
+                <field name="fecha_requerida"/>
+                <field name="almacen_id"/>
+                <field name="estado" widget="badge"/>
+                <field name="prioridad"/>
+            </tree>
+        </field>
+    </record>
 
-                <notebook>
-                    <page string="Productos Solicitados">
-                        <field name="linea_ids">
-                            <tree editable="bottom">
-                                <field name="product_id"/>
-                                <field name="cantidad_solicitada"/>
-                                <field name="uom_id"/>
-                            </tree>
-                        </field>
-                    </page>
-                    <page string="Detalles de la Solicitud">
-                        <group string="Comentarios">
-                            <field name="comentario_autorizador"/>
-                        </group>
-                        <group string="Justificación">
-                            <field name="justificacion"/>
-                        </group>
-                        <group string="Adjuntos">
-                            <field name="archivo_adjunto" filename="archivo_adjunto_nombre"/>
-                        </group>
-                    </page>
-                </notebook>
-            </sheet>
-
-            <!-- Chatter (Notas, Seguimiento, Actividades) debe ir FUERA de <sheet> -->
-            <div class="oe_chatter">
-                <field name="message_ids" widget="mail_thread"/>
-                <field name="message_follower_ids" widget="mail_followers"/>
-            </div>
-        </form>
-    </field>
-</record>
+    <!-- Vista de búsqueda para Solicitudes RDM (opcional, recomendado) -->
+    <record id="view_rdm_solicitud_search" model="ir.ui.view">
+        <field name="name">rdm.solicitud.search</field>
+        <field name="model">rdm.solicitud</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="almacen_id"/>
+                <field name="solicitante_id"/>
+                <filter name="borrador" string="Borrador" domain="[('estado','=','borrador')]"/>
+                <filter name="aprobado" string="Aprobado" domain="[('estado','=','aprobado')]"/>
+                <filter name="alta_prioridad" string="Alta Prioridad" domain="[('prioridad','=','alta')]"/>
+            </search>
+        </field>
+    </record>
+</odoo>
