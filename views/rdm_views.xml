@@ -12,8 +12,8 @@
                     <field name="estado" widget="statusbar" statusbar_visible="borrador,revision,aprobado,rechazado,enviado_compras,recibido"/>
                 </div>
 
-                <group>
-                    <group string="Información de Solicitud">
+                <group string="Información de Solicitud">
+                    <group string="Fechas">
                         <field name="fecha_solicitud"/>
                         <field name="fecha_requerida"/>
                         <field name="fecha_critica"/>
@@ -41,13 +41,13 @@
                         </field>
                     </page>
                     <page string="Detalles de la Solicitud">
-                        <group>
+                        <group string="Comentarios">
                             <field name="comentario_autorizador"/>
                         </group>
-                        <group>
+                        <group string="Justificación">
                             <field name="justificacion"/>
                         </group>
-                        <group>
+                        <group string="Adjuntos">
                             <field name="archivo_adjunto" filename="archivo_adjunto_nombre"/>
                         </group>
                     </page>
@@ -55,8 +55,10 @@
             </sheet>
 
             <!-- Chatter (Notas, Seguimiento, Actividades) debe ir FUERA de <sheet> -->
-            <field name="message_ids" widget="mail_thread"/>
-            <field name="message_follower_ids" widget="mail_followers"/>
+            <div class="oe_chatter">
+                <field name="message_ids" widget="mail_thread"/>
+                <field name="message_follower_ids" widget="mail_followers"/>
+            </div>
         </form>
     </field>
 </record>
