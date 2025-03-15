@@ -109,7 +109,7 @@
     
                 <templates>
                     <t t-name="kanban-box">
-                        <div t-att-class="'oe_kanban_card oe_kanban_card_small'"
+                        <div t-att-class="'oe_kanban_card'"
                             t-att-data-res-id="record.id.raw_value"
                             t-att-data-model="record._name"
                             t-att-data-context="{'form_view_ref':'rdm_management.view_rdm_solicitud_form'}">
@@ -122,7 +122,7 @@
                             </div>
     
                             <!-- Contenido Compacto -->
-                            <div class="o_kanban_card_content" style="font-size: 12px; line-height: 14px;">
+                            <div class="o_kanban_card_content" style="font-size: 14px; line-height: 14px;">
                                 <span><b>Almacén: </b><t t-esc="record.almacen_id.value"/></span><br/>
                                 <span><b>F. Solicitud: </b><t t-esc="record.fecha_solicitud.value"/></span><br/>
                                 <span><b>F. Requerida: </b><t t-esc="record.fecha_requerida.value"/></span>
