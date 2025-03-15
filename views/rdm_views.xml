@@ -18,7 +18,6 @@
                         <group string="Fechas">
                             <field name="fecha_solicitud"/>
                             <field name="fecha_requerida"/>
-                            <field name="fecha_critica"/>
                             <field name="prioridad"/>
                         </group>
                         <group string="Datos de Almacén y Surtido">
@@ -28,7 +27,6 @@
                         <group string="Autorizaciones">
                             <field name="solicitante_id"/>
                             <field name="autorizado"/>
-                            <field name="autorizado_por_id"/>
                         </group>
                     </group>
 
@@ -42,16 +40,14 @@
                                 </tree>
                             </field>
                         </page>
-                        <page string="Detalles de la Solicitud">
+                        <page string="Detalles de la Autorización">
                             <group string="Comentarios">
                                 <field name="comentario_autorizador"/>
                             </group>
                             <group string="Justificación">
                                 <field name="justificacion"/>
                             </group>
-                            <group string="Adjuntos">
-                                <field name="archivo_adjunto" filename="archivo_adjunto_nombre"/>
-                            </group>
+                           
                         </page>
                     </notebook>
                 </sheet>
