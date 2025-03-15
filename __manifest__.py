@@ -11,6 +11,7 @@
     'data': [
         'security/rdm_security.xml',
         'security/ir.model.access.csv',
+        'data/rdm_sequence.xml',
         'views/rdm_views.xml',
         'views/rdm_menus.xml',
     ],

@@ -38,6 +38,7 @@ class RdmSolicitud(models.Model):
             vals['name'] = self.env['ir.sequence'].next_by_code('rdm.solicitud') or 'Nuevo'
         return super(RdmSolicitud, self).create(vals)
 
+
 class RdmSolicitudLinea(models.Model):
     _name = 'rdm.solicitud.linea'
     _description = 'Línea de solicitud RDM'
