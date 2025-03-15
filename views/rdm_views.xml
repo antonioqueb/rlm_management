@@ -7,13 +7,13 @@
         <field name="arch" type="xml">
             <form string="Solicitud RDM">
                 <header>
-                    <button name="action_enviar_revision" string="Enviar a Revisión" type="object" invisible="state != 'borrador'" class="oe_highlight"/>
-                    <button name="action_aprobar" string="Aprobar" type="object" invisible="state != 'revision'" class="oe_highlight"/>
-                    <button name="action_rechazar" string="Rechazar" type="object" invisible="state != 'revision'" class="oe_highlight"/>
-                    <button name="action_enviar_compras" string="Enviar a Compras" type="object" invisible="state != 'aprobado'" class="oe_highlight"/>
-                    <button name="action_marcar_recibido" string="Marcar como Recibido" type="object" invisible="state != 'enviado_compras'" class="oe_highlight"/>
-                    <button name="action_reset_borrador" string="Restablecer a Borrador" type="object" invisible="state != 'rechazado'" class="oe_secondary"/>
-                </header>
+                    <button name="action_enviar_revision" string="Enviar a Revisión" type="object" invisible="estado != 'borrador'" class="oe_highlight"/>
+                    <button name="action_aprobar" string="Aprobar" type="object" invisible="estado != 'revision'" class="oe_highlight"/>
+                    <button name="action_rechazar" string="Rechazar" type="object" invisible="estado != 'revision'" class="oe_highlight"/>
+                    <button name="action_enviar_compras" string="Enviar a Compras" type="object" invisible="estado != 'aprobado'" class="oe_highlight"/>
+                    <button name="action_marcar_recibido" string="Marcar como Recibido" type="object" invisible="estado != 'enviado_compras'" class="oe_highlight"/>
+                    <button name="action_reset_borrador" string="Restablecer a Borrador" type="object" invisible="estado != 'rechazado'" class="oe_secondary"/>
+                </header>                
                 <sheet>
                     <div class="oe_title">
                         <h1>
