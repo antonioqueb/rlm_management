@@ -57,7 +57,7 @@
         </field>
     </record>
 
-    <!-- Vista Árbol para listar Solicitudes RLM (opcional, recomendado) -->
+    <!-- Vista Árbol para listar Requisición de Liberación de Material (opcional, recomendado) -->
     <record id="view_rlm_solicitud_tree" model="ir.ui.view">
         <field name="name">rlm.solicitud.tree</field>
         <field name="model">rlm.solicitud</field>
@@ -81,7 +81,7 @@
     
     
     
-    <!-- Vista Kanban para listar Solicitudes RLM (opcional, recomendado) -->
+    <!-- Vista Kanban para listar Requisición de Liberación de Material (opcional, recomendado) -->
     <record id="view_rlm_solicitud_kanban" model="ir.ui.view">
         <field name="name">rlm.solicitud.kanban</field>
         <field name="model">rlm.solicitud</field>
@@ -131,7 +131,7 @@
 
 
 
-    <!-- Vista de búsqueda para Solicitudes RLM (opcional, recomendado) -->
+    <!-- Vista de búsqueda para Requisición de Liberación de Material (opcional, recomendado) -->
     <record id="view_rlm_solicitud_search" model="ir.ui.view">
         <field name="name">rlm.solicitud.search</field>
         <field name="model">rlm.solicitud</field>

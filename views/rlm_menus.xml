@@ -1,8 +1,8 @@
 <odoo>
 
-    <!-- Acción para Solicitudes RLM -->
+    <!-- Acción para Requisición de Liberación de Material -->
     <record id="action_rlm_solicitud" model="ir.actions.act_window">
-        <field name="name">Solicitudes RLM</field>
+        <field name="name">Requisición de Liberación de Material</field>
         <field name="res_model">rlm.solicitud</field>
         <field name="view_mode">tree,kanban,form</field>
     </record>
@@ -14,9 +14,9 @@
         <field name="web_icon">rlm_management,static/description/icon.png</field>
     </record>
 
-    <!-- Submenú Solicitudes RLM -->
+    <!-- Submenú Requisición de Liberación de Material -->
     <record id="menu_rlm_solicitud" model="ir.ui.menu">
-        <field name="name">Solicitudes RLM</field>
+        <field name="name">Requisición de Liberación de Material</field>
         <field name="parent_id" ref="menu_rlm_root"/>
         <field name="action" ref="action_rlm_solicitud"/>
         <field name="sequence">20</field>
