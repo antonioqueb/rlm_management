@@ -10,10 +10,10 @@
                     <button name="action_enviar_revision" string="Enviar a Revisión" type="object" invisible="estado != 'borrador'" class="oe_highlight"/>
                     <button name="action_aprobar" string="Aprobar" type="object" invisible="estado != 'revision'" class="oe_highlight"/>
                     <button name="action_rechazar" string="Rechazar" type="object" invisible="estado != 'revision'" class="oe_highlight"/>
-                    
-                    
+                    <button name="action_marcar_liberado" string="Liberar" type="object" invisible="estado != 'aprobado'" class="oe_highlight"/>
                     <button name="action_reset_borrador" string="Restablecer a Borrador" type="object" invisible="estado != 'rechazado'" class="oe_secondary"/>
-                </header>                
+                </header>
+                               
                 <sheet>
                     <div class="oe_title">
                         <h1>
@@ -36,7 +36,7 @@
                     </group>
 
                     <notebook>
-                        <page string="Productos Solicitados">
+                        <page string="Productos">
                             <field name="linea_ids">
                                 <tree editable="bottom">
                                     <field name="product_id" options="{'no_quick_create': True}"/>
