@@ -7,10 +7,11 @@ class RlmSolicitud(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string='Folio del RLM', required=True, copy=False, index=True, default='Nuevo', readonly=True)
-    fecha_solicitud = fields.Date(string='Fecha de Solicitud', default=fields.Date.context_today, required=True)
+    fecha_solicitud = fields.Date(string='Fecha de Solicitud', default=fields.Date.context_today, required=True, readonly=True)
     fecha_requerida = fields.Date(string='Liberar antes del', required=True)
     almacen_id = fields.Many2one('stock.warehouse', string='Almacén', required=True)
-    solicitante_id = fields.Many2one('res.users', string='Solicitante', default=lambda self: self.env.user, required=True)
+    solicitante_id = fields.Many2one('res.users', string='Solicitante', default=lambda self: self.env.user, required=True, readonly=True)
+
    
 
     estado = fields.Selection([

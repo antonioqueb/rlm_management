@@ -24,9 +24,12 @@
 
                     <group string="Información de Solicitud">
                         <group string="Fechas">
-                            <field name="fecha_solicitud"/>
+                            <field name="fecha_solicitud" readonly="1"/>
                             <field name="fecha_requerida"/>
                             
+                        </group>
+                        <group string="Solicitante">
+                            <field name="solicitante_id" readonly="1"/>
                         </group>
                         <group string="LIBERAR MATERIALES EN EL ALMACÉN">
                             <field name="almacen_id" options="{'no_quick_create': True}"/>
