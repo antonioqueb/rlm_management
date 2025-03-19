@@ -1,3 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-rdm_solicitud_access,rdm.solicitud,model_rdm_solicitud,,1,1,1,1
-rdm_solicitud_linea_access,rdm.solicitud.linea,model_rdm_solicitud_linea,,1,1,1,1
+rlm_solicitud_access,rlm.solicitud,model_rlm_solicitud,,1,1,1,1
+rlm_solicitud_linea_access,rlm.solicitud.linea,model_rlm_solicitud_linea,,1,1,1,1

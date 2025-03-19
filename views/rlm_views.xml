@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <!-- Vista Formulario RDM -->
-    <record id="view_rdm_solicitud_form" model="ir.ui.view">
-        <field name="name">rdm.solicitud.form</field>
-        <field name="model">rdm.solicitud</field>
+    <!-- Vista Formulario RLM -->
+    <record id="view_rlm_solicitud_form" model="ir.ui.view">
+        <field name="name">rlm.solicitud.form</field>
+        <field name="model">rlm.solicitud</field>
         <field name="arch" type="xml">
-            <form string="Solicitud RDM">
+            <form string="Solicitud RLM">
                 <header>
                     <button name="action_enviar_revision" string="Enviar a Revisión" type="object" invisible="estado != 'borrador'" class="oe_highlight"/>
                     <button name="action_aprobar" string="Aprobar" type="object" invisible="estado != 'revision'" class="oe_highlight"/>
                     <button name="action_rechazar" string="Rechazar" type="object" invisible="estado != 'revision'" class="oe_highlight"/>
-                    <button name="action_enviar_compras" string="Enviar a Compras" type="object" invisible="estado != 'aprobado'" class="oe_highlight"/>
-                    <button name="action_marcar_recibido" string="Marcar como Recibido" type="object" invisible="estado != 'enviado_compras'" class="oe_highlight"/>
+                    
+                    
                     <button name="action_reset_borrador" string="Restablecer a Borrador" type="object" invisible="estado != 'rechazado'" class="oe_secondary"/>
                 </header>                
                 <sheet>
@@ -19,23 +19,20 @@
                         <h1>
                             <field name="name" placeholder="Solicitud"/>
                         </h1>
-                        <field name="estado" widget="statusbar" statusbar_visible="borrador,revision,aprobado,rechazado,enviado_compras,recibido"/>
+                        <field name="estado" widget="statusbar" statusbar_visible="borrador,revision,aprobado,rechazado,liberado"/>
                     </div>
 
                     <group string="Información de Solicitud">
                         <group string="Fechas">
                             <field name="fecha_solicitud"/>
                             <field name="fecha_requerida"/>
-                            <field name="prioridad"/>
+                            
                         </group>
-                        <group string="Datos de Almacén y Surtido">
+                        <group string="LIBERAR MATERIALES EN EL ALMACÉN">
                             <field name="almacen_id" options="{'no_quick_create': True}"/>
                           
                         </group>
-                        <group string="Autorizaciones">
-                            <field name="solicitante_id"/>
-                            <field name="autorizado"/>
-                        </group>
+                       
                     </group>
 
                     <notebook>
@@ -47,15 +44,6 @@
                                     <field name="uom_id"/>
                                 </tree>
                             </field>
-                        </page>
-                        <page string="Detalles de la Autorización">
-                            <group string="Comentarios">
-                                <field name="comentario_autorizador"/>
-                            </group>
-                            <group string="Justificación">
-                                <field name="justificacion"/>
-                            </group>
-                           
                         </page>
                     </notebook>
                 </sheet>
@@ -69,10 +57,10 @@
         </field>
     </record>
 
-    <!-- Vista Árbol para listar Solicitudes RDM (opcional, recomendado) -->
-    <record id="view_rdm_solicitud_tree" model="ir.ui.view">
-        <field name="name">rdm.solicitud.tree</field>
-        <field name="model">rdm.solicitud</field>
+    <!-- Vista Árbol para listar Solicitudes RLM (opcional, recomendado) -->
+    <record id="view_rlm_solicitud_tree" model="ir.ui.view">
+        <field name="name">rlm.solicitud.tree</field>
+        <field name="model">rlm.solicitud</field>
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
@@ -84,20 +72,19 @@
                        decoration-warning="estado == 'revision'"
                        decoration-success="estado == 'aprobado'"
                        decoration-danger="estado == 'rechazado'"
-                       decoration-info="estado == 'enviado_compras'"
-                       decoration-primary="estado == 'recibido'"
+                       decoration-primary="estado == 'liberado'"
                 />
-                <field name="prioridad"/>
+                
             </tree>
         </field>
     </record>
     
     
     
-    <!-- Vista Kanban para listar Solicitudes RDM (opcional, recomendado) -->
-    <record id="view_rdm_solicitud_kanban" model="ir.ui.view">
-        <field name="name">rdm.solicitud.kanban</field>
-        <field name="model">rdm.solicitud</field>
+    <!-- Vista Kanban para listar Solicitudes RLM (opcional, recomendado) -->
+    <record id="view_rlm_solicitud_kanban" model="ir.ui.view">
+        <field name="name">rlm.solicitud.kanban</field>
+        <field name="model">rlm.solicitud</field>
         <field name="arch" type="xml">
             <kanban class="o_kanban_small_column">
                 <field name="name"/>
@@ -105,14 +92,13 @@
                 <field name="fecha_requerida"/>
                 <field name="almacen_id"/>
                 <field name="estado"/>
-                <field name="prioridad"/>
     
                 <templates>
                     <t t-name="kanban-box">
                         <div t-att-class="'oe_kanban_card'"
                             t-att-data-res-id="record.id.raw_value"
                             t-att-data-model="record._name"
-                            t-att-data-context="{'form_view_ref':'rdm_management.view_rdm_solicitud_form'}">
+                            t-att-data-context="{'form_view_ref':'rlm_management.view_rlm_solicitud_form'}">
     
                             <!-- Cabecera Compacta -->
                             <div class="o_kanban_card_header">
@@ -128,17 +114,12 @@
                                 <span><b>F. Requerida: </b><t t-esc="record.fecha_requerida.value"/></span>
                             </div>
     
-                            <!-- Pie con Iconos en Línea -->
-                            <div class="o_kanban_card_footer">
-                                <t t-if="record.prioridad.raw_value == 'alta'">
-                                    <span class="fa fa-exclamation-triangle text-danger" title="Alta Prioridad"/>
-                                </t>
-                            </div>
+                           
     
                             <a type="open" class="oe_kanban_global_click"
                                t-att-data-id="record.id.raw_value"
                                t-att-data-model="record._name"
-                               t-att-data-context="{'form_view_ref': 'rdm_management.view_rdm_solicitud_form'}"/>
+                               t-att-data-context="{'form_view_ref': 'rlm_management.view_rlm_solicitud_form'}"/>
                         </div>
                     </t>
                 </templates>
@@ -150,10 +131,10 @@
 
 
 
-    <!-- Vista de búsqueda para Solicitudes RDM (opcional, recomendado) -->
-    <record id="view_rdm_solicitud_search" model="ir.ui.view">
-        <field name="name">rdm.solicitud.search</field>
-        <field name="model">rdm.solicitud</field>
+    <!-- Vista de búsqueda para Solicitudes RLM (opcional, recomendado) -->
+    <record id="view_rlm_solicitud_search" model="ir.ui.view">
+        <field name="name">rlm.solicitud.search</field>
+        <field name="model">rlm.solicitud</field>
         <field name="arch" type="xml">
             <search>
                 <field name="name"/>
@@ -161,7 +142,7 @@
                 <field name="solicitante_id"/>
                 <filter name="borrador" string="Borrador" domain="[('estado','=','borrador')]"/>
                 <filter name="aprobado" string="Aprobado" domain="[('estado','=','aprobado')]"/>
-                <filter name="alta_prioridad" string="Alta Prioridad" domain="[('prioridad','=','alta')]"/>
+               
             </search>
         </field>
     </record>

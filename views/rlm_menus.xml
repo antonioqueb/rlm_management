@@ -1,0 +1,26 @@
+<odoo>
+
+    <!-- Acción para Solicitudes RLM -->
+    <record id="action_rlm_solicitud" model="ir.actions.act_window">
+        <field name="name">Solicitudes RLM</field>
+        <field name="res_model">rlm.solicitud</field>
+        <field name="view_mode">tree,kanban,form</field>
+    </record>
+
+    <!-- Menú principal con Ícono -->
+    <record id="menu_rlm_root" model="ir.ui.menu">
+        <field name="name">RLM</field>
+        <field name="sequence">10</field>
+        <field name="web_icon">rlm_management,static/description/icon.png</field>
+    </record>
+
+    <!-- Submenú Solicitudes RLM -->
+    <record id="menu_rlm_solicitud" model="ir.ui.menu">
+        <field name="name">Solicitudes RLM</field>
+        <field name="parent_id" ref="menu_rlm_root"/>
+        <field name="action" ref="action_rlm_solicitud"/>
+        <field name="sequence">20</field>
+        <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
+    </record>
+
+</odoo>
